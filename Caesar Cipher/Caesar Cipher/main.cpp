@@ -14,28 +14,41 @@ using std::ofstream;
 using std::ios_base;
 using std::ifstream;
 using std::copy;
+using std::numeric_limits;
+using std::streamsize;
 
 int main() {
-    vector<char> vec;
-    string file_string;
-
     string target_file = "test.txt";
     /*
     cout << "Enter file name to be encrypted: ";
     string target_file;
     cin >> target_file;
     */
-
+    
     unsigned int shift;
     cout << "Shift value: ";
     cin >> shift;
+    while (cin.fail()) {
+        cout << "Invalid input please enter a number." << endl;
+        cout << "Shift value: ";
+        
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        cin >> shift;
+    }
+
 
     string direction;
-    cout << "Direction (left/right): ";
-    cin >> direction;
-    cout << endl;
+    getline(cin, direction);
 
-    typedef vector<char>::size_type vec_sz;
+    while (direction != "left" && direction != "right") {
+        cout << "Invalid input please enter 'left' or 'right'." << endl;
+        cout << "Direction (left/right): ";
+        getline(cin, direction);
+
+        cin.clear();
+    }
 
     ifstream input_file(target_file);
 
@@ -45,6 +58,10 @@ int main() {
     }
 
     cout << "File contents:" << endl;
+
+    vector<char> vec;
+    typedef vector<char>::size_type vec_sz;
+    string file_string;
 
     while (getline(input_file, file_string)) {
         copy(file_string.begin(), file_string.end(), back_inserter(vec));
