@@ -1,0 +1,15 @@
+# ignore the output files
+*.txt
+# ignore all .exe files
+*.exe
+# ignore VS Code files
+.vscode/
+.tempCodeRunnerFile.cpp
+# ignore Visual Studio Code files
+Debug/
+.vs/
+v16/
+*.sln
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
