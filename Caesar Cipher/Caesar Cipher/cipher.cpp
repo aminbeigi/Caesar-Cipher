@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <list>
 
 using std::vector;
 using std::string;
@@ -11,7 +10,11 @@ using std::ofstream;
 using std::cout;
 using std::endl;
 using std::ios_base;
-using std::list;
+
+#define A 65
+#define a 97
+#define Z 90
+#define z 122;
 
 int cipher(vector<char> output_vec, string target_file, unsigned int& shift, string& direction) {
     ofstream output_file;
