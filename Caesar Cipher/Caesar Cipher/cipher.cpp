@@ -14,32 +14,25 @@ using std::ios_base;
 #define A 65
 #define a 97
 #define Z 90
-#define z 122;
+#define z 122
+#define ALPHABET_SIZE 26
 
-int cipher(vector<char> output_vec, string target_file, unsigned int& shift, string& direction) {
-    ofstream output_file;
+string output_file_path = "new_text.txt";
 
-    output_file.open("new_text.txt", fstream::out);
+int cipher(vector<char> output_vec, string target_file, string& original_file_string, int shift, string& direction) {
 
+
+    // open a file in write mode
+    ofstream output_file(output_file_path);
     if (!output_file.is_open()) {
         cout << "Output file couldn't open." << endl;
         return 1;
     }
 
-    output_file.close();
-
-
-    // now append
-    output_file.open("new_text.txt", ios_base::app);
-    if (!output_file.is_open()) {
-        cout << "Output file couldn't open." << endl;
-        return 1;
-    }
-
-    if (shift == 0) {
-        for (auto i : output_vec) {
-            output_file << i;
-        }
+    if (shift % ALPHABET_SIZE == 0) {
+        cout << "encrtyped stuff:" << endl;
+        cout << original_file_string << endl;
+        output_file << original_file_string;
         return 0;
     }
     
@@ -99,6 +92,5 @@ int cipher(vector<char> output_vec, string target_file, unsigned int& shift, str
 
     output_file.close();
     cout << "file has successfully been encrytped" << endl;
-
     return 0;
 }

@@ -25,58 +25,47 @@ int main() {
     cin >> target_file;
     */
     
-    unsigned int shift;
-    cout << "Shift value: ";
-    cin >> shift;
-    while (cin.fail()) {
-        cout << "Invalid input please enter a number." << endl;
-        cout << "Shift value: ";
-        
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-        cin >> shift;
-    }
-
-
-    string direction;
-    getline(cin, direction);
-
-    while (direction != "left" && direction != "right") {
-        cout << "Invalid input please enter 'left' or 'right'." << endl;
-        cout << "Direction (left/right): ";
-        getline(cin, direction);
-
-        cin.clear();
-    }
-
     ifstream input_file(target_file);
-
     if (!input_file.is_open()) {
         cout << "Input file couldn't open." << endl;
         return 1;
     }
 
+    int shift;
+    cout << "Shift value: ";
+    cin >> shift;
+    while (cin.fail()) {
+        cout << "Invalid input please enter a number." << endl;
+        cout << "Shift value: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> shift;
+    }
+
+    string direction;
+    getline(cin, direction);
+    while (direction != "left" && direction != "right") {
+        cout << "Invalid input please enter 'left' or 'right'." << endl;
+        cout << "Direction (left/right): ";
+        getline(cin, direction);
+        cin.clear();
+    }
+
+
     cout << "File contents:" << endl;
 
     vector<char> vec;
-    typedef vector<char>::size_type vec_sz;
     string file_string;
+    string original_output_string = "";
 
     while (getline(input_file, file_string)) {
         copy(file_string.begin(), file_string.end(), back_inserter(vec));
-
         cout << file_string << endl;
+        original_output_string += file_string + '\n' ;
     }
 
-    vec_sz size = vec.size();
-    cout << endl;
-
-    cout << "file contains " << size << " characters" << endl;
-
     input_file.close();
-
-    cipher(vec, target_file, shift, direction);
+    cipher(vec, target_file, original_output_string, shift, direction);
 
     return 0;
 }
