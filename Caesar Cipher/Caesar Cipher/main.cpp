@@ -14,7 +14,6 @@ using std::endl;
 using std::ofstream;
 using std::ios_base;
 using std::ifstream;
-using std::copy;
 
 // the file to be encrypted
 const string& input_file_path = "test.txt";
@@ -57,7 +56,7 @@ int main() {
 
     cout << "File contents:" << endl;
     while (getline(input_file, file_string)) {
-        copy(file_string.begin(), file_string.end(), back_inserter(vec));
+        std::copy(file_string.begin(), file_string.end(), back_inserter(vec));
         vec.push_back('\n');
         cout << file_string << endl;
         original_output_string += file_string + '\n' ;
