@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <cctype>
 
 #include "cipher.h"
 
@@ -14,14 +15,12 @@ using std::ofstream;
 using std::ios_base;
 using std::ifstream;
 using std::copy;
-using std::numeric_limits;
-using std::streamsize;
 
 // the file to be encrypted
-const string& inputFilePath = "test.txt";
+const string& input_file_path = "test.txt";
 
 int main() {
-    string target_file = inputFilePath;
+    string target_file = input_file_path;
     
     ifstream input_file(target_file);
     if (!input_file.is_open()) {
@@ -32,11 +31,11 @@ int main() {
     int shift;
     cout << "Shift value: ";
     cin >> shift;
-    while (cin.fail()) {
+    while (cin.fail() || !(shift >= 0)) {
         cout << "Invalid input please enter a number." << endl;
         cout << "Shift value: ";
         cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         cin >> shift;
     }
 
