@@ -17,13 +17,11 @@ using std::copy;
 using std::numeric_limits;
 using std::streamsize;
 
+// the file to be encrypted
+const string& inputFilePath = "test.txt";
+
 int main() {
-    string target_file = "test.txt";
-    /*
-    cout << "Enter file name to be encrypted: ";
-    string target_file;
-    cin >> target_file;
-    */
+    string target_file = inputFilePath;
     
     ifstream input_file(target_file);
     if (!input_file.is_open()) {
@@ -51,13 +49,11 @@ int main() {
         cin.clear();
     }
 
-
-    cout << "File contents:" << endl;
-
     vector<char> vec;
     string file_string;
     string original_output_string = "";
 
+    cout << "File contents:" << endl;
     while (getline(input_file, file_string)) {
         copy(file_string.begin(), file_string.end(), back_inserter(vec));
         cout << file_string << endl;

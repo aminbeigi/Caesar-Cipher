@@ -17,20 +17,21 @@ using std::ios_base;
 #define z 122
 #define ALPHABET_SIZE 26
 
-string output_file_path = "new_text.txt";
+// the file to be outputted to
+const string& outputFilePath = "new_text.txt";
 
 int cipher(vector<char> output_vec, string target_file, string& original_file_string, int shift, string& direction) {
 
 
     // open a file in write mode
-    ofstream output_file(output_file_path);
+    ofstream output_file(outputFilePath);
     if (!output_file.is_open()) {
         cout << "Output file couldn't open." << endl;
         return 1;
     }
 
     if (shift % ALPHABET_SIZE == 0) {
-        cout << "encrtyped stuff:" << endl;
+        cout << "Encrtyped file contents" << endl;
         cout << original_file_string << endl;
         output_file << original_file_string;
         return 0;
