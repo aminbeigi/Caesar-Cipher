@@ -59,7 +59,7 @@ int cipher(vector<char>& output_vec, string target_file, string& original_file_s
             } else {
                 position = lower_alphabet.find(c) + new_shift;
             }
-            if (position > ALPHABET_SIZE) {
+            if (position >= ALPHABET_SIZE) {
                 position -= ALPHABET_SIZE;
             }
         }
