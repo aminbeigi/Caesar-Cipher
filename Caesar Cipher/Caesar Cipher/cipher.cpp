@@ -9,6 +9,7 @@ using std::cout;
 using std::endl;
 
 #define ALPHABET_SIZE 26
+#define SMALLEST_ALPHABET_SIZE 1
 
 // the file to be outputted to
 const string& output_file_path = "new_text.txt";
@@ -71,7 +72,7 @@ int cipher(vector<char>& output_vec, string target_file, string& original_file_s
             } else {
                 position = lower_alphabet.find(c) - new_shift;
             }
-            if (position < 1) {
+            if (position < SMALLEST_ALPHABET_SIZE) {
                 position += ALPHABET_SIZE;
             }
         }
