@@ -16,7 +16,7 @@ using std::ios_base;
 using std::ifstream;
 
 // the file to be encrypted
-const string& input_file_path = "test.txt";
+const string& input_file_path = "text.txt";
 
 int main() {
     string target_file = input_file_path;
