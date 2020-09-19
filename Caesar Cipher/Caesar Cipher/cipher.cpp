@@ -10,16 +10,12 @@ using std::ofstream;
 using std::cout;
 using std::endl;
 
-#define A 65
-#define a 97
-#define Z 90
-#define z 122
-#define lower_alphabet_SIZE 26
+#define ALPHABET_SIZE 26
 
 // the file to be outputted to
 const string& output_file_path = "new_text.txt";
 
-int cipher(vector<char> output_vec, string target_file, string& original_file_string, int shift, string& direction) {
+int cipher(vector<char>& output_vec, string target_file, string& original_file_string, int& shift, string& direction) {
     // open a file in write mode
     ofstream output_file(output_file_path);
     if (!output_file.is_open()) {
@@ -27,7 +23,7 @@ int cipher(vector<char> output_vec, string target_file, string& original_file_st
         return 1;
     }
 
-    int new_shift = shift % lower_alphabet_SIZE;
+    int new_shift = shift % ALPHABET_SIZE;
 
     if (new_shift == 0) {
         cout << "Encrtyped file contents:" << endl;
@@ -59,8 +55,8 @@ int cipher(vector<char> output_vec, string target_file, string& original_file_st
             } else {
                 position = lower_alphabet.find(c) + new_shift;
             }
-            if (position > 26) {
-                position -= 26;
+            if (position > ALPHABET_SIZE) {
+                position -= ALPHABET_SIZE;
             }
         }
 
@@ -72,7 +68,7 @@ int cipher(vector<char> output_vec, string target_file, string& original_file_st
                 position = lower_alphabet.find(c) - new_shift;
             }
             if (position < 1) {
-                position += 26;
+                position += ALPHABET_SIZE;
             }
         }
 

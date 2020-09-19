@@ -4,6 +4,6 @@
 #include <vector>
 #include <string>
 
-int cipher(std::vector<char> output_vec, std::string target_file, std::string& original_file_string, int shift, std::string& direction);
+int cipher(std::vector<char>& output_vec, std::string target_file, std::string& original_file_string, int& shift, std::string& direction);
 
 #endif
