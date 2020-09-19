@@ -5,8 +5,6 @@
 
 using std::vector;
 using std::string;
-using std::fstream;
-using std::ofstream;
 using std::cout;
 using std::endl;
 
@@ -17,7 +15,7 @@ const string& output_file_path = "new_text.txt";
 
 int cipher(vector<char>& output_vec, string target_file, string& original_file_string, int& shift, string& direction) {
     // open a file in write mode
-    ofstream output_file(output_file_path);
+    std::ofstream output_file(output_file_path);
     if (!output_file.is_open()) {
         cout << "Output file couldn't open." << endl;
         return 1;

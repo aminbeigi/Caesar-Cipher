@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <cctype>
 
 #include "cipher.h"
 
@@ -11,9 +10,6 @@ using std::string;
 using std::cout;
 using std::cin;
 using std::endl;
-using std::ofstream;
-using std::ios_base;
-using std::ifstream;
 
 // the file to be encrypted
 const string& input_file_path = "text.txt";
@@ -21,7 +17,7 @@ const string& input_file_path = "text.txt";
 int main() {
     string target_file = input_file_path;
     
-    ifstream input_file(target_file);
+    std::ifstream input_file(target_file);
     if (!input_file.is_open()) {
         cout << "Input file couldn't open." << endl;
         return 1;
@@ -37,7 +33,7 @@ int main() {
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         cin >> shift;
     }
-    // clean up cin for getline
+    // clean up cin for following getline
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     string direction;
