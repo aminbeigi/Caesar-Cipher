@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/yLtUqhZ.png" height="110px" width="auto"/>
 <br/>
 <h3 align="center">Caeser Cipher</h3>
-<p align="center">description.</p>
+<p align="center">A C++ implementation of Caeser Cipher.</p>
 <h2></h2>
 </p>
 <br />
@@ -13,7 +13,7 @@
 </p>
 
 ## Description
-
+Caesar-Cipher encrypts the characters of  a selected file and writes its output in to a new file using Caesar Cipher encryption.  
 
 ## Requirements
 * C++ 11
