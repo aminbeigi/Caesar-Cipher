@@ -38,8 +38,11 @@ int main() {
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         cin >> shift;
     }
+    // clean up cin for getline
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     string direction;
+    cout << "Direction (left/right): ";
     getline(cin, direction);
     while (direction != "left" && direction != "right") {
         cout << "Invalid input please enter 'left' or 'right'." << endl;
@@ -55,6 +58,7 @@ int main() {
     cout << "File contents:" << endl;
     while (getline(input_file, file_string)) {
         copy(file_string.begin(), file_string.end(), back_inserter(vec));
+        vec.push_back('\n');
         cout << file_string << endl;
         original_output_string += file_string + '\n' ;
     }

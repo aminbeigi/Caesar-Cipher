@@ -28,13 +28,43 @@ int cipher(vector<char> output_vec, string target_file, string& original_file_st
         return 1;
     }
 
-    if (shift % ALPHABET_SIZE == 0) {
+    int new_shift = shift % ALPHABET_SIZE;
+
+    if (new_shift == 0) {
         cout << "Encrtyped file contents:" << endl;
-        cout << original_file_string << endl;
         output_file << original_file_string;
+        cout << original_file_string << endl;
         return 0;
     }
     
+    string alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    int position = 0;
+    int output = 0;
+    string output_string = "";
+    for (char c : output_vec) {
+        if (c == '\n') {
+            output_string += '\n';
+            continue;
+        }
+
+        if (std::isspace(c)) {
+            output_string += c;
+            continue;
+        }
+
+        position = alphabet.find(c) + new_shift;
+
+        if (position > 26) {
+            position -= 26;
+        }
+
+        output_string += alphabet[position];
+    }
+
+    cout << "Encrtyped file contents:" << endl;
+    output_file << output_string;
+    cout << output_string;
 
     /* 
     if (direction == "right") {
@@ -65,6 +95,7 @@ int cipher(vector<char> output_vec, string target_file, string& original_file_st
     }
     */
 
+    /* 
     if (direction == "left") {
         for (int i : output_vec) {
             int decimal = (int)i;
@@ -91,6 +122,7 @@ int cipher(vector<char> output_vec, string target_file, string& original_file_st
             output_file << (char)decimal;
         }
     }
+    */
 
     output_file.close();
     return 0;
