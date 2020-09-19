@@ -13,7 +13,7 @@
 </p>
 
 ## Description
-Caesar-Cipher encrypts the characters of  a selected file and writes its output in to a new file using Caesar Cipher encryption.  
+Caesar-Cipher encrypts the characters of a selected file and writes the output into a new file using Caesar Cipher encryption.  
 
 ## Requirements
 * C++ 11
