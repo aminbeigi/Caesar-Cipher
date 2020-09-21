@@ -37,7 +37,7 @@ int cipher(vector<char>& output_vec, string target_file, string& original_file_s
     int output = 0;
     string output_string = "";
     for (char c : output_vec) {
-        // skip anything that is not a alphabet character
+        // skip anything that is not an alphabet character
         if (!(std::isalpha(c))) {
             output_string += c;
             continue;
